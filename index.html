@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>W8 Homework: Prepare for Portfolio Checklist - Digital Skills</title>
+<style>
+:root {
+  --primary: #ea37a3;
+  --primary-light: #fdf1f5;
+  --secondary: #0a8080;
+  --secondary-light: #f5ffff;
+  --dark: #222;
+  --light: #fff;
+  --grid-light: #e0e0e0;
+  --homework: #ea37a3;
+  --homework-light: #fdf1f5;
+  --inclass: #0a8080;
+  --inclass-light: #f5ffff;
+  --homework-banner: #ffebf5;
+  --inclass-banner: #e6ffff;
+  --quiz: #4682b4;
+  --quiz-light: #f0f8ff;
+  --warning: #ff6b35;
+  --warning-light: #fff4f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Typewriter Condensed", "Courier New", monospace;
+  background-image:
+    linear-gradient(var(--grid-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-light) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px;
+  background-attachment: fixed;
+  color: var(--dark);
+  padding: 20px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.97);
+  border: 3px solid var(--homework);
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: "Typewriter Condensed", "Courier New", monospace;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  color: var(--homework);
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--secondary);
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 25px;
+  background: var(--homework);
+  margin-right: 15px;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--homework);
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+  font-size: 1.1rem;
+}
+
+/* Deadline Banner */
+.deadline-banner {
+  background: linear-gradient(135deg, var(--warning) 0%, #ff8c42 100%);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.deadline-banner h2 {
+  color: white;
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+}
+
+.deadline-banner h2::before {
+  display: none;
+}
+
+.deadline-banner p {
+  margin: 0;
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+/* Workshop Overview */
+.workshop-overview {
+  margin: 35px 0;
+  border-radius: 15px;
+  border: 3px solid var(--secondary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.workshop-header {
+  background: var(--secondary);
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.workshop-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+.workshop-content {
+  padding: 25px;
+}
+
+/* Preparation Checklist */
+.prep-checklist {
+  background: white;
+  border-radius: 15px;
+  border: 3px solid var(--homework);
+  overflow: hidden;
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.prep-checklist-header {
+  background: var(--homework);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prep-checklist-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.prep-progress {
+  background: rgba(255,255,255,0.3);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.prep-checklist-content {
+  padding: 20px;
+}
+
+.prep-item {
+  background: #f8f8f8;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.prep-item.completed {
+  border-color: var(--secondary);
+  background: linear-gradient(135deg, var(--secondary-light) 0%, white 100%);
+}
+
+.prep-item.completed .prep-item-header {
+  background: var(--secondary);
+}
+
+.prep-item.completed .prep-item-header span {
+  color: white;
+}
+
+.prep-item.completed .prep-item-header .item-number {
+  background: white;
+  color: var(--secondary);
+}
+
+.prep-item-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--homework-light);
+  gap: 15px;
+  cursor: pointer;
+}
+
+.item-number {
+  width: 35px;
+  height: 35px;
+  background: var(--homework);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.prep-item-header span {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.prep-item-header .toggle-icon {
+  font-size: 1.5rem;
+  color: var(--homework);
+  transition: transform 0.3s ease;
+}
+
+.prep-item.expanded .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.prep-item-content {
+  display: none;
+  padding: 20px;
+  border-top: 1px dashed #ddd;
+  background: white;
+}
+
+.prep-item.expanded .prep-item-content {
+  display: block;
+}
+
+.prep-item-content ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.prep-item-content li {
+  margin-bottom: 10px;
+}
+
+.complete-btn {
+  background: var(--homework);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: block;
+  margin-top: 15px;
+}
+
+.complete-btn:hover {
+  background: #c92d87;
+  transform: translateY(-2px);
+}
+
+.complete-btn:disabled {
+  background: var(--secondary);
+  cursor: default;
+  transform: none;
+}
+
+/* What to Bring Box */
+.bring-box {
+  background: linear-gradient(135deg, var(--warning-light) 0%, #fff 100%);
+  border: 3px solid var(--warning);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bring-box h3 {
+  color: var(--warning);
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.bring-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.bring-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.bring-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.bring-text h4 {
+  margin: 0 0 5px 0;
+  color: var(--dark);
+  font-size: 1.1rem;
+}
+
+.bring-text p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Term Box */
+.term-box {
+  background: #f8f9fa;
+  border-left: 6px solid #17a2b8;
+  padding: 15px 20px;
+  margin: 20px 0;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+.term-box strong {
+  color: #17a2b8;
+}
+
+.term-box ul {
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.term-box li {
+  margin-bottom: 8px;
+}
+
+/* Important Notice */
+.important-notice {
+  margin-bottom: 20px; 
+  padding: 15px 20px; 
+  background: rgba(234, 55, 163, 0.15); 
+  border-left: 5px solid var(--homework); 
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.important-notice strong {
+  color: var(--homework);
+}
+
+/* Tip Box */
+.tip-box {
+  background: linear-gradient(135deg, #e8f5e9 0%, #fff 100%);
+  border: 2px solid #28a745;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tip-box h4 {
+  color: #28a745;
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.tip-box p {
+  margin-bottom: 10px;
+}
+
+.tip-box ul {
+  margin-left: 20px;
+}
+
+.tip-box li {
+  margin-bottom: 8px;
+}
+
+/* Harvard Reference Box */
+.reference-box {
+  background: linear-gradient(135deg, #fff3e0 0%, #fff 100%);
+  border: 2px solid #ff9800;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.reference-box h4 {
+  color: #ff9800;
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.reference-box code {
+  background: #f5f5f5;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: block;
+  margin: 10px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  border-left: 4px solid #ff9800;
+}
+
+/* Preview Section */
+.preview-section {
+  background: var(--inclass-light);
+  border: 3px solid var(--inclass);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px 0;
+}
+
+.preview-section h3 {
+  color: var(--inclass);
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.preview-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.preview-item h4 {
+  color: var(--inclass);
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+}
+
+.preview-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Completion Message */
+.all-complete-message {
+  display: none;
+  background: linear-gradient(135deg, var(--secondary) 0%, #086868 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 30px 0;
+  box-shadow: 0 8px 25px rgba(10, 128, 128, 0.3);
+}
+
+.all-complete-message.show {
+  display: block;
+  animation: celebrate 0.5s ease;
+}
+
+.all-complete-message h3 {
+  color: white;
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.all-complete-message p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+@keyframes celebrate {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Questions Box */
+.questions-box {
+  background: #f8f8f8;
+  border: 2px dashed var(--secondary);
+  border-radius: 12px;
+  padding: 25px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.questions-box h3 {
+  color: var(--secondary);
+  margin-top: 0;
+}
+
+.questions-box p {
+  margin-bottom: 15px;
+}
+
+.questions-box a {
+  color: var(--homework);
+  font-weight: bold;
+}
+
+/* Print Button */
+.print-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--homework);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.print-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+@media print {
+  .print-button {
+    display: none;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .bring-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .preview-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>📋 W8 Homework: Prepare for Portfolio Checklist</h1>
+  <p style="text-align: center; font-size: 1.2rem; color: #666;">Complete these tasks BEFORE the W9 session</p>
+
+  <!-- Deadline Banner -->
+  <div class="deadline-banner">
+    <h2>⏰ Complete Before Week 9</h2>
+    <p>You will need your portfolio ready to review in class. Don't leave this until the last minute!</p>
+  </div>
+
+  <!-- Overview -->
+  <div class="workshop-overview">
+    <div class="workshop-header">
+      <h3>Why This Preparation Matters</h3>
+    </div>
+    <div class="workshop-content">
+      <p>In Week 9, you will work through a <strong>Portfolio Checklist Game</strong> to ensure your portfolio meets assessment criteria. To make the most of this session, you need to:</p>
+      <ul style="margin-left: 25px; margin-top: 15px;">
+        <li>Have your portfolio files organised and accessible</li>
+        <li>Know where all your work is saved</li>
+        <li>Have reviewed the assessment criteria</li>
+        <li>Be ready to make improvements during the session</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- What to Bring -->
+  <div class="bring-box">
+    <h3>🎒 What to Bring to W9</h3>
+    <div class="bring-grid">
+      <div class="bring-item">
+        <div class="bring-icon">💻</div>
+        <div class="bring-text">
+          <h4>Your Laptop</h4>
+          <p>Fully charged with Photoshop installed</p>
+        </div>
+      </div>
+      <div class="bring-item">
+        <div class="bring-icon">📁</div>
+        <div class="bring-text">
+          <h4>Portfolio Files</h4>
+          <p>All your portfolio pages saved and organised</p>
+        </div>
+      </div>
+      <div class="bring-item">
+        <div class="bring-icon">🖼️</div>
+        <div class="bring-text">
+          <h4>Research Images</h4>
+          <p>Images you've used with source information</p>
+        </div>
+      </div>
+      <div class="bring-item">
+        <div class="bring-icon">📝</div>
+        <div class="bring-text">
+          <h4>Reference List</h4>
+          <p>Artist names, dates, and image sources</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preparation Checklist -->
+  <div class="prep-checklist">
+    <div class="prep-checklist-header">
+      <h3>✅ Preparation Checklist</h3>
+      <span class="prep-progress" id="prepProgress">0 / 6 Complete</span>
+    </div>
+    <div class="prep-checklist-content">
+      
+      <!-- Item 1: Organise Files -->
+      <div class="prep-item" data-item="organise">
+        <div class="prep-item-header" onclick="togglePrepItem(this)">
+          <div class="item-number">1</div>
+          <span>Organise Your Portfolio Files</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+        <div class="prep-item-content">
+          <p><strong>Create a clear folder structure for your work:</strong></p>
+          <ul>
+            <li>Create a main folder called <strong>"Portfolio_Term2"</strong></li>
+            <li>Inside, create subfolders:
+              <ul>
+                <li>📁 Introduction</li>
+                <li>📁 Research_Pages</li>
+                <li>📁 Design_Development</li>
+                <li>📁 Refinement_Selection</li>
+                <li>📁 Final_Lineup</li>
+                <li>📁 Source_Images</li>
+              </ul>
+            </li>
+            <li>Move all your portfolio files into the correct folders</li>
+            <li>Name files clearly (e.g., "Research_Page_01.psd")</li>
+          </ul>
+          <button class="complete-btn" onclick="markPrepComplete(this, 'organise')">Mark as Complete ✓</button>
+        </div>
+      </div>
+
+      <!-- Item 2: Check All Pages -->
+      <div class="prep-item" data-item="pages">
+        <div class="prep-item-header" onclick="togglePrepItem(this)">
+          <div class="item-number">2</div>
+          <span>Check You Have All Required Pages</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+        <div class="prep-item-content">
+          <p><strong>Your portfolio should include:</strong></p>
+          <ul>
+            <li>✓ <strong>Introduction page</strong> with project title and context</li>
+            <li>✓ <strong>Research pages</strong> showing diverse sources and your responses</li>
+            <li>✓ <strong>Design development pages</strong> with 2D and 3D ideas</li>
+            <li>✓ <strong>Refinement & selection pages</strong> showing your editing process</li>
+            <li>✓ <strong>Colour palette page</strong> with research links</li>
+            <li>✓ <strong>Final lineup/outcomes</strong></li>
+          </ul>
+          <p style="color: var(--homework); font-weight: bold;">If you're missing any pages, start working on them now!</p>
+          <button class="complete-btn" onclick="markPrepComplete(this, 'pages')">Mark as Complete ✓</button>
+        </div>
+      </div>
+
+      <!-- Item 3: Gather Source Information -->
+      <div class="prep-item" data-item="sources">
+        <div class="prep-item-header" onclick="togglePrepItem(this)">
+          <div class="item-number">3</div>
+          <span>Gather Source Information for Referencing</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+        <div class="prep-item-content">
+          <p><strong>For every image in your portfolio, you need:</strong></p>
+          <ul>
+            <li>Artist/Creator's name</li>
+            <li>Year the work was created (if known)</li>
+            <li>Title of the work</li>
+            <li>Where you found it (website, book, museum)</li>
+          </ul>
+          
+          <div class="reference-box" style="margin-top: 20px;">
+            <h4>📚 Harvard Referencing Format</h4>
+            <p><strong>Format:</strong></p>
+            <code>Artist's Last Name, First Initial. (Year). <em>Title of the work</em> [Image].</code>
+            <p><strong>Example:</strong></p>
+            <code>Turner, L. (2018). <em>Abstract concepts in digital art</em> [Image].</code>
+          </div>
+          
+          <p><strong>Create a simple list</strong> of all your sources in a document or notes app. You'll need this in class!</p>
+          <button class="complete-btn" onclick="markPrepComplete(this, 'sources')">Mark as Complete ✓</button>
+        </div>
+      </div>
+
+      <!-- Item 4: Review Assessment Criteria -->
+      <div class="prep-item" data-item="criteria">
+        <div class="prep-item-header" onclick="togglePrepItem(this)">
+          <div class="item-number">4</div>
+          <span>Review the Assessment Criteria</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+        <div class="prep-item-content">
+          <p><strong>Your portfolio will be assessed on:</strong></p>
+          
+          <div class="term-box">
+            <strong>Key Assessment Areas:</strong>
+            <ul>
+              <li><strong>Subheadings & Layout</strong> – Clear, creative, with graphic elements</li>
+              <li><strong>Research & Inspiration</strong> – Diverse sources with your responses</li>
+              <li><strong>Design Development</strong> – 2D and 3D ideas with research links</li>
+              <li><strong>Refinement & Selection</strong> – Showing your editing process</li>
+              <li><strong>Referencing</strong> – Properly credited sources</li>
+              <li><strong>Colour Palette</strong> – Relevant with research support</li>
+              <li><strong>Typography</strong> – Consistent and appropriate</li>
+              <li><strong>Visual Elements</strong> – High quality and supporting your message</li>
+            </ul>
+          </div>
+          
+          <p>Think about which areas are your <strong>strengths</strong> and which need <strong>improvement</strong>.</p>
+          <button class="complete-btn" onclick="markPrepComplete(this, 'criteria')">Mark as Complete ✓</button>
+        </div>
+      </div>
+
+      <!-- Item 5: Self-Review -->
+      <div class="prep-item" data-item="review">
+        <div class="prep-item-header" onclick="togglePrepItem(this)">
+          <div class="item-number">5</div>
+          <span>Do a Quick Self-Review</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+        <div class="prep-item-content">
+          <p><strong>Look through your portfolio and ask yourself:</strong></p>
+          <ul>
+            <li>Does my introduction clearly explain my project?</li>
+            <li>Can I see a clear connection between research and design?</li>
+            <li>Have I shown my thinking and decision-making process?</li>
+            <li>Are my subheadings helpful and creative?</li>
+            <li>Is there enough variety in my research sources?</li>
+            <li>Does my work look professional and well-organised?</li>
+          </ul>
+          
+          <div class="tip-box" style="margin-top: 20px;">
+            <h4>💡 Pro Tip</h4>
+            <p>Make notes about areas you're unsure about. You can address these during the W9 checklist session!</p>
+          </div>
+          <button class="complete-btn" onclick="markPrepComplete(this, 'review')">Mark as Complete ✓</button>
+        </div>
+      </div>
+
+      <!-- Item 6: Technical Check -->
+      <div class="prep-item" data-item="technical">
+        <div class="prep-item-header" onclick="togglePrepItem(this)">
+          <div class="item-number">6</div>
+          <span>Technical Check</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+        <div class="prep-item-content">
+          <p><strong>Before coming to class, make sure:</strong></p>
+          <ul>
+            <li>✓ Your laptop is <strong>fully charged</strong></li>
+            <li>✓ <strong>Adobe Photoshop</strong> is installed and working</li>
+            <li>✓ You can <strong>access all your files</strong> (not on a drive you might forget!)</li>
+            <li>✓ You have your <strong>UAL login details</strong> ready</li>
+            <li>✓ You know how to <strong>take screenshots</strong>:
+              <ul>
+                <li>Mac: Command (⌘) + Shift + 3</li>
+                <li>Windows: Windows + Shift + S</li>
+              </ul>
+            </li>
+          </ul>
+          <button class="complete-btn" onclick="markPrepComplete(this, 'technical')">Mark as Complete ✓</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- All Complete Message -->
+  <div class="all-complete-message" id="allCompleteMessage">
+    <h3>🎉 You're Ready for W9!</h3>
+    <p>Great job completing all the preparation tasks. You're all set for the Portfolio Checklist session!</p>
+  </div>
+
+  <!-- Preview of W9 -->
+  <div class="preview-section">
+    <h3>👀 Preview: What You'll Do in W9</h3>
+    <div class="preview-grid">
+      <div class="preview-item">
+        <h4>Task 1</h4>
+        <p>Portfolio Checklist Game (1 hour)</p>
+      </div>
+      <div class="preview-item">
+        <h4>Task 2</h4>
+        <p>Document Your Progress (30-45 mins)</p>
+      </div>
+      <div class="preview-item">
+        <h4>Task 3</h4>
+        <p>Upload to Padlet</p>
+      </div>
+      <div class="preview-item">
+        <h4>Outcome</h4>
+        <p>Improved portfolio ready for assessment</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Important Notice -->
+  <div class="important-notice">
+    <strong>⚠️ Important:</strong> If you arrive to W9 without your portfolio files organised and accessible, you won't be able to fully participate in the session. Complete this preparation to get the most out of the checklist activity!
+  </div>
+
+  <!-- Questions -->
+  <div class="questions-box">
+    <h3>❓ Questions?</h3>
+    <p>If you're unsure about anything or need help before the session, reach out to your tutor or post in the class discussion board.</p>
+    <p>You can also review the <a href="https://hsstokes.github.io/Harvard-Referencing-Guide/" target="_blank">Harvard Referencing Guide</a> if you need help with citations.</p>
+  </div>
+
+</div>
+
+<button class="print-button" onclick="window.print()">🖨️</button>
+
+<script>
+// Toggle prep item expansion
+function togglePrepItem(header) {
+  const item = header.closest('.prep-item');
+  const wasExpanded = item.classList.contains('expanded');
+  
+  // Close all items first
+  document.querySelectorAll('.prep-item').forEach(i => {
+    i.classList.remove('expanded');
+  });
+  
+  // Open clicked item if it wasn't already open
+  if (!wasExpanded) {
+    item.classList.add('expanded');
+  }
+}
+
+// Mark prep item as complete
+function markPrepComplete(button, itemId) {
+  const item = button.closest('.prep-item');
+  item.classList.add('completed');
+  item.classList.remove('expanded');
+  button.textContent = 'Completed ✓';
+  button.disabled = true;
+  
+  // Update progress
+  updatePrepProgress();
+  
+  // Check if all complete
+  checkAllComplete();
+  
+  // Save state
+  savePrepState();
+}
+
+// Update progress counter
+function updatePrepProgress() {
+  const totalItems = document.querySelectorAll('.prep-item').length;
+  const completedItems = document.querySelectorAll('.prep-item.completed').length;
+  document.getElementById('prepProgress').textContent = `${completedItems} / ${totalItems} Complete`;
+}
+
+// Check if all items are complete
+function checkAllComplete() {
+  const totalItems = document.querySelectorAll('.prep-item').length;
+  const completedItems = document.querySelectorAll('.prep-item.completed').length;
+  
+  if (totalItems === completedItems) {
+    document.getElementById('allCompleteMessage').classList.add('show');
+  }
+}
+
+// Save state to localStorage
+function savePrepState() {
+  const completedItems = [];
+  document.querySelectorAll('.prep-item.completed').forEach(item => {
+    completedItems.push(item.dataset.item);
+  });
+  localStorage.setItem('w8-prep-checklist-state', JSON.stringify(completedItems));
+}
+
+// Load state from localStorage
+function loadPrepState() {
+  const savedState = localStorage.getItem('w8-prep-checklist-state');
+  if (savedState) {
+    const completedItems = JSON.parse(savedState);
+    completedItems.forEach(itemId => {
+      const item = document.querySelector(`.prep-item[data-item="${itemId}"]`);
+      if (item && !item.classList.contains('completed')) {
+        item.classList.add('completed');
+        const btn = item.querySelector('.complete-btn');
+        if (btn) {
+          btn.textContent = 'Completed ✓';
+          btn.disabled = true;
+        }
+      }
+    });
+    updatePrepProgress();
+    checkAllComplete();
+  }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  loadPrepState();
+  
+  // Auto-expand first incomplete item
+  const firstIncomplete = document.querySelector('.prep-item:not(.completed)');
+  if (firstIncomplete) {
+    firstIncomplete.classList.add('expanded');
+  }
+});
+</script>
+
+</body>
+</html>
